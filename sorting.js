@@ -98,9 +98,6 @@ const insertionSort = (size) => {
 
 // console.log(insertionSort(5))
 
-
-
-
 //BUCKET SORT
 
 //figure out the highest number
@@ -111,16 +108,41 @@ const insertionSort = (size) => {
 //sort each bucket
 //join the sorted buckets together
 
-
 const bucketSort = (arr) => {
     console.log(arr)
+    
+    //get array characteristics
     let numBuckets = Math.floor(Math.sqrt(arr.length))
-    return numBuckets
+    let max = Math.max(...arr)
+    let min = Math.min(...arr)
+    // console.log(min, max)
+    let range = max-min
+    
+    //define upper ranges for buckets (less than or equal to)
+    //create placeholder buckets
+    let bucketRanges = []
+    let buckets = []
 
+
+    for (let i=0; i<numBuckets; i++) {
+        let divider = min + (range*((i+1)/numBuckets))
+        bucketRanges.push(divider)
+        buckets[i] = []
+    }
+
+
+    for (let j=0; j<arr.length; j++) {
+        for (let k=0; k<numBuckets; k++) {
+            if (arr[j]<=bucketRanges[k]) {
+                buckets[k].push(arr[j])
+            }
+        }
+    }
+
+    return buckets
 }
 
-
-
-console.log(bucketSort([12,6,3,7,13,8]))
+console.log(bucketSort([12, 6, 3, 7, 13, 8]))
 console.log(bucketSort([-3, -1, 5, 100]))
-console.log(bucketSort([-3, -1, 5, 100]))
+console.log(bucketSort([-3, -1, 5, 52, 100]))
+
