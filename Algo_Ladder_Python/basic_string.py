@@ -84,7 +84,7 @@ def duplicates(string):
 print(duplicates("abcdefghhijkkloooop"))
 
 def palindrome(string):
-    print("Palindrome")
+    # print("Palindrome")
     check = True
 
     left = 0
