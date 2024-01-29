@@ -154,14 +154,61 @@ const bucketSort = (arr) => {
     }
 
     //sort and concatanate each bucket
+    
     buckets.forEach(a=>bubbleSort(a))
     let output = [].concat(...buckets)
+
     return output
 }
 
 
 
-console.log(bucketSort([12, 6, 3, 7, 13, 8]))
-console.log(bucketSort([-3, -1, 5, 100]))
-console.log(bucketSort([-3, -1, 5, 101, 115, 78, 51, 52, 100]))
+// console.log(bucketSort([12, 6, 3, 7, 13, 8]))
+// console.log(bucketSort([-3, -1, 5, 100]))
+// console.log(bucketSort([-3, -1, 5, 101, 115, 78, 51, 52, 100]))
 
+
+//MERGE SORT
+
+/* 
+1. Break array into halves recursively until each array has a single element
+2. Sort each pair of arrays and merge until the array is combined.
+*/
+
+//Phase 2 - merge two sorted arrays
+const merge = (left, right) => {
+    let mergeOutput = []
+
+    while(left.length && right.length) {
+        if (left[0]<right[0]){
+            mergeOutput.push(left.shift())
+        } else {
+            mergeOutput.push(right.shift())
+        }
+        console.log(mergeOutput)
+    }
+    
+    // spread operators account for scenarios when left and right are not the same size
+    return [...mergeOutput, ...left, ...right]
+}
+
+// console.log(merge([1, 4], [2, 6, 9]))
+
+
+//Phase 1
+const mergeSort = (arr) => {
+    let output = []
+
+
+    //Phase 1 - break into parts, half by half
+    const phaseOne = (part) => {
+
+    }
+
+    // let phaseOneOutput = phaseOne(arr)
+
+
+    return output
+}
+
+// console.log(mergeSort(randomArray(12)))
