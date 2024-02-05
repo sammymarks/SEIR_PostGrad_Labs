@@ -299,13 +299,18 @@ def ETL_three(videos, authors):
     output = []
 
     auths_hash = {}
+
+    # O(N)
     for auth in authors:
         auths_hash[auth["id"]] = auth["first_name"] + " " + auth["last_name"]
 
+    # O(N)
     for vid in videos:
         if vid["views"]>100:
+            #O(1) - Free Auths_Hash Lookups
             output.append({"title": vid["title"], "views": vid["views"], "author_name": auths_hash[vid["author_id"]]})
 
+    #O(2N)
     return output
 
 videos = [
