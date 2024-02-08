@@ -185,7 +185,7 @@ const merge = (left, right) => {
         } else {
             mergeOutput.push(right.shift())
         }
-        console.log(mergeOutput)
+        // console.log(mergeOutput)
     }
     
     // spread operators account for scenarios when left and right are not the same size
@@ -197,18 +197,14 @@ const merge = (left, right) => {
 
 //Phase 1
 const mergeSort = (arr) => {
-    let output = []
+    // Base case
+    if (arr.length <= 1) return arr
+    let mid = Math.floor(arr.length / 2)
+    // Recursive calls
+    let left = mergeSort(arr.slice(0, mid))
+    let right = mergeSort(arr.slice(mid))
+    return merge(left, right)
+  }
+  
 
-
-    //Phase 1 - break into parts, half by half
-    const phaseOne = (part) => {
-
-    }
-
-    // let phaseOneOutput = phaseOne(arr)
-
-
-    return output
-}
-
-// console.log(mergeSort(randomArray(12)))
+console.log(mergeSort(randomArray(12)))
